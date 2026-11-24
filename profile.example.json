@@ -1,0 +1,55 @@
+{
+  "candidate": {
+    "title": "Software Systems & Machine Intelligence Candidate",
+    "summary": "Undergraduate studying Computer Science specializing in autonomous systems, robotics perception pipelines, computer vision, and systems engineering. Experienced in ROS 2, C++, PyTorch, Go, simulation, and LiDAR processing.",
+    "preferred_role_types": ["Internship", "Part-Time", "Full-Time", "Hackathon"],
+    "llm_guidance": "Prioritize roles with hands-on perception, autonomous navigation, or systems backend work. Flag any opportunities with defense, robotics labs, or AI research divisions."
+  },
+  "domains": [
+    {
+      "id": "robotics_autonomy",
+      "name": "Robotics & Autonomous Systems",
+      "description": "Autonomous vehicles, maritime robotics, perception stacks, sensor fusion, visual SLAM, and robotics simulation.",
+      "keywords": ["ROS 2", "C++", "LiDAR", "simulation", "Gazebo", "eCAL", "sensor fusion", "autonomous driving"]
+    },
+    {
+      "id": "computer_vision_ai",
+      "name": "Computer Vision & Applied AI",
+      "description": "Deep learning models, CNNs, image classification, synthetic data synthesis, and edge AI deployment.",
+      "keywords": ["PyTorch", "Computer Vision", "Object Detection", "Synthetic Data", "Edge AI"]
+    },
+    {
+      "id": "systems_software",
+      "name": "Systems & High-Performance Software",
+      "description": "High-throughput telemetry, distributed services, concurrency optimization, and low-latency storage.",
+      "keywords": ["Go", "C++", "Distributed Systems", "Telemetry", "Linux", "gRPC"]
+    },
+    {
+      "id": "general_tech",
+      "name": "Software Engineering & Data Internships",
+      "description": "General computing internships, backend engineering, data engineering, and tech industry placements.",
+      "keywords": ["Software Engineering Intern", "Backend Developer", "Data Engineer"]
+    },
+    {
+      "id": "events_hackathons",
+      "name": "Tech Events & Competitions",
+      "description": "Autonomous robotics challenges, algorithmic hackathons, tech talks, and career networking sessions.",
+      "keywords": ["Hackathon", "Tech Talk", "Competition", "Webinar"]
+    }
+  ],
+  "negative_filters": [
+    "sales representative",
+    "telemarketing",
+    "social media influencer",
+    "tuition teacher",
+    "private tutor",
+    "insurance agent",
+    "financial consultant",
+    "cold calling",
+    "unpaid sales"
+  ],
+  "scoring": {
+    "min_threshold": 40,
+    "max_results": 5
+  }
+}

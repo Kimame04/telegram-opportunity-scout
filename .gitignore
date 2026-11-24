@@ -1,0 +1,49 @@
+# Environments & Secrets
+.env
+*.env
+!.env.example
+
+# Candidate Profile Configurations
+profile.json
+profile.*.json
+profile.local.*
+!.profile.example.json
+!profile.example.json
+
+# Agent & Assistant Operational Guidelines (Local SOP)
+AGENTS.md
+agents.md
+*.agent.md
+
+# Telegram MTProto Session Files
+*.session
+*.session-journal
+*.session.*
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Test & Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Local data, logs & outputs
+output/
+out/
+scratch/
+.cache/
+*.parquet
+*.jsonl
+*.log
+
+# OS Artifacts
+.DS_Store
+Thumbs.db

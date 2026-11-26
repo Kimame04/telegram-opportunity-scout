@@ -4,6 +4,7 @@ Ingestion layer: Telegram channel message collector using MTProto (Telethon).
 
 from __future__ import annotations
 
+import asyncio
 import logging
 from abc import ABC, abstractmethod
 from datetime import datetime, timedelta, timezone
@@ -65,9 +66,32 @@ class TelegramIngester(BaseIngester):
 
         return await self.client.get_entity(channel_id)
 
+    async def _connect_with_retry(self, max_attempts: int = 5, base_delay: float = 5.0) -> None:
+        """Connect to Telegram with exponential backoff for wake-from-sleep network delays."""
+        for attempt in range(1, max_attempts + 1):
+            try:
+                await self.client.start(phone=self.config.phone)
+                return
+            except (OSError, TimeoutError, asyncio.TimeoutError) as e:
+                try:
+                    await self.client.disconnect()
+                except Exception:
+                    pass
+                if attempt >= max_attempts:
+                    raise
+                delay = base_delay * (2 ** (attempt - 1))
+                logger.warning(
+                    "Telegram connection attempt %d/%d failed (%s); retrying in %.1fs...",
+                    attempt,
+                    max_attempts,
+                    e,
+                    delay,
+                )
+                await asyncio.sleep(delay)
+
     async def fetch_recent_messages(self, lookback_hours: int) -> List[OpportunityPost]:
         """Fetch messages from the channel within the lookback window."""
-        await self.client.start(phone=self.config.phone)
+        await self._connect_with_retry()
 
         entity = await self._resolve_channel_entity()
         cutoff = datetime.now(timezone.utc) - timedelta(hours=lookback_hours)
